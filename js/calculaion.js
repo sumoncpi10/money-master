@@ -27,13 +27,20 @@ document.getElementById('btnsave').addEventListener('click', function(){
 function Save(){
     let incomefield=parseFloat(document.getElementById('incomefield').value);
     let totalBalanceResult=parseFloat(document.getElementById('total-balance').innerText);
+    
+    
     let percentfield=parseFloat(document.getElementById('savefield').value);
     let saveAmount=(incomefield/100)*percentfield;
+    let totalRemBalanceResult=totalBalanceResult-saveAmount;
     if(Number.isNaN(percentfield)){
         alert('Please Enter valid Percent  ');
     }
     else if(totalBalanceResult<saveAmount){
         alert('You cannot Save More then you have.');
+    }
+    else{
+        document.getElementById('saveammount').innerText=saveAmount;
+        document.getElementById('remainingbalance').innerText=totalRemBalanceResult;
     }
     console.log(saveAmount);
 
