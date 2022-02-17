@@ -11,21 +11,33 @@ document.getElementById("btn-calculate").addEventListener('click' ,function(){
     if(incomefield<totalExpence){
         alert('You cannot use more money then you earn!');
     }
-    else{
+    else if(typeof totalExpence=='number' && typeof incomefield=='number'){
         totalExpensesResult.innerText=totalExpence;
     
         let Balance=incomefield-totalExpence;
         totalBalanceResult.innerText=Balance;
     }
     
-
-    
-
-
-
-
 });
 
+document.getElementById('btnsave').addEventListener('click', function(){
+    let save=Save();
+});
+
+function Save(){
+    let incomefield=parseFloat(document.getElementById('incomefield').value);
+    let totalBalanceResult=parseFloat(document.getElementById('total-balance').innerText);
+    let percentfield=parseFloat(document.getElementById('savefield').value);
+    let saveAmount=(incomefield/100)*percentfield;
+    if(Number.isNaN(percentfield)){
+        alert('Please Enter valid Percent  ');
+    }
+    else if(totalBalanceResult<saveAmount){
+        alert('You cannot Save More then you have.');
+    }
+    console.log(saveAmount);
+
+}
 function totalExpences(){
 
     let foodCost=parseFloat(document.getElementById('foodfield').value);
